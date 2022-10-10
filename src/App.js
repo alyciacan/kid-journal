@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Ideas from './Ideas.js'
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -16,6 +18,7 @@ class App extends Component {
       <main className="App">
         <h1>kidjournal</h1>
         <p>A place to document the amazing things your kids say!</p>
+        <Ideas name="Alycia"/>
       </main>
     )
   }
