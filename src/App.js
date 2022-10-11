@@ -17,7 +17,7 @@ class App extends Component {
 
   deleteEntry = (id) => {
     console.log(id);
-    const filteredEntries = this.state.entries.filter(entry => entry.id != id);
+    const filteredEntries = this.state.entries.filter(entry => entry.id !== id);
 
     this.setState({ entries: filteredEntries })
   }
@@ -27,9 +27,9 @@ class App extends Component {
       <main className="App">
         <h1>kidjournal</h1>
         <p>A place to document the amazing things your kids say!</p>
+        <Form addEntry={this.addEntry}/>
         {!this.state.entries.length && <h2>No entries yet -- add some!</h2>}
         <Ideas entries={this.state.entries} deleteEntry={this.deleteEntry} />
-        <Form addEntry={this.addEntry}/>
       </main>
     )
   }

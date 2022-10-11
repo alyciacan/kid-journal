@@ -2,7 +2,7 @@ import React from 'react';
 import './Ideas.css';
 import Card from './Card';
 
-const Ideas = ({entries, deleteEntry }) => {
+const Ideas = ({ entries, deleteEntry }) => {
     const entryCards = entries.map(entry => {
         return (
             <Card 
