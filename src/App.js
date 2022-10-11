@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import Ideas from './Ideas.js'
+import Ideas from './Ideas.js';
 import './App.css';
+import Form from './Form.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      entries: [
-        { id: 1, quote: 'Mom I noticed you\'ve been doing a lot of Poloing today.', by: 'Edgar', date: '10/9/22' },
-        { id: 2, quote: 'Were there ever any nice ninjas?', by: 'Maggie', date: '10/9/22'}
-      ]
+      entries: []
     }
+  }
+
+  addEntry = (newEntry) => {
+    this.setState({ entries: [...this.state.entries, newEntry] })
+  }
+
+  deleteEntry = (id) => {
+    console.log(id);
+    const filteredEntries = this.state.entries.filter(entry => entry.id != id);
+
+    this.setState({ entries: filteredEntries })
   }
 
   render() {
@@ -18,7 +27,9 @@ class App extends Component {
       <main className="App">
         <h1>kidjournal</h1>
         <p>A place to document the amazing things your kids say!</p>
-        <Ideas name="Alycia"/>
+        {!this.state.entries.length && <h2>No entries yet -- add some!</h2>}
+        <Ideas entries={this.state.entries} deleteEntry={this.deleteEntry} />
+        <Form addEntry={this.addEntry}/>
       </main>
     )
   }

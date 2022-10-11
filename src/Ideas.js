@@ -1,9 +1,24 @@
 import React from 'react';
 import './Ideas.css';
+import Card from './Card';
 
-const Ideas = (props) => {
+const Ideas = ({entries, deleteEntry }) => {
+    const entryCards = entries.map(entry => {
+        return (
+            <Card 
+                id={entry.id}
+                quote={entry.quote}
+                by={entry.by}
+                date={entry.date}
+                key={entry.id}
+                deleteEntry={deleteEntry}
+            />
+        )
+    })
     return (
-        <h2>Here are your quotes, {props.name}:</h2>
+        <div className="card-container">
+            {entryCards}
+        </div>
     )
 }
 
